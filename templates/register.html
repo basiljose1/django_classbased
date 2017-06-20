@@ -1,0 +1,21 @@
+  {% extends 'base.html' %}
+
+  {% load static %}
+  {% block content %}
+  <div id="index-banner" class="parallax-container blue">
+    <div class="section no-pad-bot">
+      <div class="container">
+      <form action="." method="post">
+      {% csrf_token %}
+        {% for field in form %}
+          <div class="fieldWrapper">
+              {{ field.errors }}
+              {{ field.label_tag }} {{ field }}
+          </div>
+      {% endfor %}
+      <input type="submit" value="OK">
+      </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

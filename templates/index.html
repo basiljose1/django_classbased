@@ -1,0 +1,50 @@
+  {% extends 'base.html' %}
+
+  {% load static %}
+  {% block content %}
+  <div class="container-fluid">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+        </div>
+
+        <div class="col s12 m4">
+        </div>
+
+        <div class="col s12 m3">
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+         <div class="row">
+            <div class="card-panel white">
+              <form action="{% url 'index' %}" method="post">
+                <h4>Login</h4>
+                <span class="red-text">{{ form.non_field_errors }}</span>
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{% if request.POST.next %}{{ request.POST.next }}{% else %}{{ request.GET.next }}{% endif %}"/>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input name="username" id="username" type="text" class="validate" required>
+                    <label for="username">Username</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input name="password" id="password" type="password" class="validate" required>
+                    <label for="password">Password</label>
+                  </div>
+                </div>
+                <input type="submit" class="waves-effect waves-light btn waves-green btn-flat" value="Login" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

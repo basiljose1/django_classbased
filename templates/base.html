@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Parallax Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='{% static "css/materialize.css" %}' type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href='{% static "css/style.css" %}' type="text/css" rel="stylesheet" media="screen,projection"/>
+  {% block style %}{% endblock %}
+
+</head>
+<body class="blue">
+  <nav class="blue lighten-1 white-text" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo white-text">Logo</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/register/" class="white-text">Register</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a class="white-text">
+        {{request.user.username}}
+        </a></li>
+        <li><a href="/logout/" class="white-text">Logout</a></li>
+        {% endif %}
+
+        
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav blue">
+        <li><a href="/register/" class="white-text">Register</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a class="white-text">
+        {{request.user.username}}
+        </a></li>
+        <li><a href="/logout/" class="white-text">Logout</a></li>
+        {% endif %}
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  {% block content %}
+
+  {% endblock %}
+  <footer class="page-footer blue">
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3">Basil</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src='{% static "js/materialize.js" %}'></script>
+  <script src='{% static "js/init.js" %}'></script>
+  {% block script %}{% endblock %}
+
+  </body>
+</html>
